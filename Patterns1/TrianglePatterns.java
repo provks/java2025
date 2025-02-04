@@ -45,17 +45,29 @@ public class TrianglePatterns {
         
         // 1
         // 2 3
-        // 4 5 6
+        // 3 4 5
+        // for (int i = 1; i <= n; i++) {
+        //     // int p = i;
+        //     for (int j = 1; j <= i; j++) {
+        //         // cols = row
+        //         System.out.print(i+j-1);
+        //         // System.out.print(p + " ");
+        //         // p++;
+        //     }
+        //     System.out.println();
+        // }
+
+
+        // 1
+        // 2 2
+        // 3 3 3
         for (int i = 1; i <= n; i++) {
-            // int p = i;
             for (int j = 1; j <= i; j++) {
-                // cols = row
-                System.out.print(i+j-1);
-                // System.out.print(p + " ");
-                // p++;
+                System.out.print(i + " ");
             }
             System.out.println();
         }
+
         
         
         sc.close();
