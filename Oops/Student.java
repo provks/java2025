@@ -10,13 +10,13 @@ public class Student {
     double cgpa;
     // final double conversionFactor = 0.95;
     final static double conversionFactor = 0.95;
-    static int totalStudents;
+    private static int TOTAL_STUDENTS;
 
     // constructor
     Student() {
         // this("student");
         // conversionFactor = 0.95;
-        totalStudents++;
+        TOTAL_STUDENTS++;
     }
 
     // public Student(String name) {
@@ -50,6 +50,11 @@ public class Student {
         this.address = address;
     }
 
+    // Getter (to give read access)
+    public static int getTotalStudents() {
+        return TOTAL_STUDENTS;
+    }
+
     public static void main(String[] args) {
         // Scanner sc = new Scanner(System.in);
         // Student s1 = new Student("varun");
@@ -65,7 +70,10 @@ public class Student {
         // s2.print();
         s4.print();
         // System.out.println(s4.totalStudents);
-        System.out.println(Student.totalStudents);
+        System.out.println(Student.TOTAL_STUDENTS);
+        System.out.println(s4.TOTAL_STUDENTS);
+        Student.TOTAL_STUDENTS = 100;
+        System.out.println(Student.TOTAL_STUDENTS);
         // System.out.println(s1.rollNo);
         // System.out.println(s1.address);
     }
