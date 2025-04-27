@@ -33,7 +33,7 @@ public class VehicleUse {
         // Vehicle v = new Vehicle();
         // v.print();
 
-        Car c = new Car("Blue", "Fronx");
+        // Car c = new Car("Blue", "Fronx");
         // c.print();
 
         // Bike b = new Bike();
@@ -48,8 +48,15 @@ public class VehicleUse {
 
         // Maruti m = new Maruti();
 
-        // Vehicle v = new Vehicle();
         // Vehicle v2 = new Vehicle("white");
+        
+
+        //  ############### Class Casting ###############
+        // Vehicle v = new Vehicle();
+        Vehicle v = new Car();
+        // v = new Bike();
+        Car c = (Car)v; // class casting, forcing the jvm/compiler to type cast
+        System.out.println(c.numOfDoors);
 
 
     }

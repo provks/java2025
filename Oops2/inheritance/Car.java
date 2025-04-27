@@ -5,6 +5,8 @@ public class Car extends Vehicle {
     int maxSpeed;
 
     // contstructor and inheritance
+    Car() {   
+    }
     Car(String color, String name) {
         super(color, name);//
         System.out.print("Car's constructor ");
