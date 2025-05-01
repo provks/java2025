@@ -6,8 +6,11 @@ public class VehicleUse {
         
         // Vehicle v = new InterfaceVehicle();
         InterfaceVehicle vI;
-        vI = new Vehicle();
+        // vI = new Vehicle();
+        vI = new Car();
         vI.getCompany();
         // vI.print(); // compile time error: can access only the properties/methods that are present in the interface.
+        Vehicle v = new Vehicle();
+        v.print();
     }
 }
