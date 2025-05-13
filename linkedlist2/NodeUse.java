@@ -1,4 +1,4 @@
-package linkedlistPart3;
+package Java.linkedlist2;
 
 import java.util.Scanner;
 
@@ -101,14 +101,79 @@ public class NodeUse {
         return head;
     }
 
+    //  Print LL recursively
+    public static void printRec(Node<Integer> head) {
+        // base case
+        if (head == null) {
+            return;
+        }
+
+        // small calc.
+        System.out.print(head.data + " ");
+
+        // recursive call
+        printRec(head.next);
+
+        // small calc.
+        // System.out.print(head.data + " ");
+    }
+
+    // insert node recursively
+    public static Node<Integer> insertNodeRec(Node<Integer> head, int data, int pos){
+        // base case
+        if (head == null && pos > 0) {
+            return head;
+        }
+        // inserting at position = 0
+        if (pos == 0) {
+            // create node
+            Node<Integer> newNode = new Node<>(data);
+            newNode.next = head;
+            return newNode;
+        }
+
+        // inserting within LL
+        // recursive call
+        // Node<Integer> updatedHead = insertNodeRec(head.next, data, pos-1);
+        
+        // // small calculation
+        // head.next = updatedHead;
+        head.next = insertNodeRec(head.next, data, pos-1);
+
+        return head;
+
+    }
+
+    // delete node recursively
+    public static Node<Integer> deleteRec(Node<Integer> head, int pos) {
+        // base case
+        if (head == null) {
+            return head;
+        }
+
+        // handle delete head
+        if (pos == 0) {
+            return head.next;
+        }
+
+        // recursive call
+        // head.next = deleteRec(head.next, pos-1);
+        Node<Integer> updatedHead = deleteRec(head.next, pos-1);
+        head.next = updatedHead;
+        return head;
+    }
     public static void main(String[] args) {
         // Node<Integer> head = createLL();
         Node<Integer> head = takeInput();
-        head = insertNodeAtPos(head, 50, 0);
+        // head = insertNodeAtPos(head, 50, 0);
         // call print method to print all nodes
-        printNodes(head);
-        System.out.println();
+        // printNodes(head);
+        // System.out.println();
         // printNodes(head.next.next);
+
+        // head = insertNodeRec(head, 60, 6);
+        head = deleteRec(head, 7);
+        printRec(head);
 
     }
 }

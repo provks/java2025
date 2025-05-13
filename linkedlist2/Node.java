@@ -1,4 +1,4 @@
-package linkedlistPart3;
+package Java.linkedlist2;
 
 public class Node<T> {
     T data;
