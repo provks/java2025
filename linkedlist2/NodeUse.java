@@ -162,6 +162,27 @@ public class NodeUse {
         head.next = updatedHead;
         return head;
     }
+
+    // Reverse LL (Iterative)
+    public static Node<Integer> reverseLL(Node<Integer> head){
+        // initialize prev, curr, and next
+        Node<Integer> prev = null, curr = head, next;
+
+        // traverse over LL
+        while (curr != null) {
+            // keep "next node" safe
+            next = curr.next;
+
+            // making the connect with prev
+            curr.next = prev;
+
+            // update prev and curr
+            prev = curr;
+            curr = next;
+        }
+        // return new head (previously tail)
+        return prev;
+    }
     public static void main(String[] args) {
         // Node<Integer> head = createLL();
         Node<Integer> head = takeInput();
@@ -172,8 +193,10 @@ public class NodeUse {
         // printNodes(head.next.next);
 
         // head = insertNodeRec(head, 60, 6);
-        head = deleteRec(head, 7);
+        // head = deleteRec(head, 7);
         printRec(head);
+         Node<Integer> reversedHead = reverseLL(head);
+        printRec(reversedHead);
 
     }
 }
