@@ -1,21 +1,38 @@
 package Java.Stack;
+import java.util.Stack;
 
 public class StackUse {
     public static void main(String[] args) throws StackEmptyException, StackFullException {
 
         int arr[] = {10, 20, 30, 40, 50, 60, 70, 80};
         // creating new stack
-        StackWithArrays stack = new StackWithArrays();
+        // StackWithArrays stack = new StackWithArrays();
+        // StackwithLL<Integer> stack = new StackwithLL<>();
         // StackWithArrays stack = new StackWithArrays(arr.length);
+        // stack.peek();
+        // for(int val: arr) {
+        //     stack.push(val);
+        // }
 
-        for(int val: arr) {
-            stack.push(val);
+        // while (!stack.isEmpty()) {
+        //     System.out.println(stack.pop());
+        // }
+        // System.out.println(stack.isEmpty());
+
+        Stack<Integer> stack2 = new Stack<>();
+         for(int val: arr) {
+            stack2.push(val);
         }
 
-        while (!stack.isEmpty()) {
-            System.out.println(stack.pop());
+        System.out.println(stack2.size());
+        System.out.println(stack2.peek());
+        while (!stack2.isEmpty()) {
+            System.out.println(stack2.pop());
         }
-        System.out.println(stack.isEmpty());
+        System.out.println(stack2.isEmpty());
+        
+
+
 
         // // stack.data[2] = 100;
 
