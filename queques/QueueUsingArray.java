@@ -31,10 +31,13 @@ public class QueueUsingArray {
     }
 
     // enqueue
-    public void enqueque(int element) throws QueueFullException {
+    public void enqueque(int element) {
         // handle queue is full
         if (size == data.length) {
-            throw new QueueFullException();
+            // throw new QueueFullException();
+            // create double sized array
+            System.out.println("Creating array of double capacity");
+            doubleCapacity();
         }
         // if inserting first element, update front
         if (size == 0) {
@@ -49,6 +52,28 @@ public class QueueUsingArray {
         data[rear] = element;
         // update size of queue
         size++;
+    }
+
+    private void doubleCapacity() {
+        // create double sized array
+        int temp[] = data;
+        data = new int[2 * data.length];
+
+        // copy elements
+        int index = 0;
+        // copy elements from front to length-1
+        for(int i = front; i <= temp.length-1; i++) {
+            data[index] = temp[i];
+            index++;
+        }
+        // copy element from 0 to front-1
+        for(int i = 0; i < front-1; i++) {
+            data[index] = temp[i];
+            index++;
+        }
+        // update front and rear for the new array
+        front = 0;
+        rear = temp.length-1;
     }
 
     //front
