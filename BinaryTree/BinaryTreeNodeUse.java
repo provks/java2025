@@ -1,5 +1,7 @@
 package Java.BinaryTree;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class BinaryTreeNodeUse {
@@ -124,6 +126,58 @@ public class BinaryTreeNodeUse {
         return leftSubtreeNodeCount + rightSubtreeNodeCount + 1;
     }
 
+    // take input level wise
+    public static BinaryTreeNode<Integer> takeInputLevelWise() {
+        // take input
+        Scanner sc = new Scanner(System.in);
+        int rootData = sc.nextInt();
+
+        // handle empty binary tree
+        if (rootData == -1) return null;
+
+        // insert it(root) into queue
+        BinaryTreeNode<Integer> root = new BinaryTreeNode<Integer>(rootData);
+        Queue<BinaryTreeNode<Integer>> pendingChildren = new LinkedList<>();
+        pendingChildren.add(root);
+
+        while(!pendingChildren.isEmpty()) {
+            // take out front from queue
+            BinaryTreeNode<Integer> front = pendingChildren.poll();
+            
+            System.out.println("Enter the left of " + front.data);
+            int left = sc.nextInt();
+            if (left != -1) {
+                // attach to the left of front
+                 BinaryTreeNode<Integer> leftChild = new BinaryTreeNode<Integer>(left);
+                 front.left = leftChild;
+                // insert leftChile into queque
+                pendingChildren.add(leftChild);
+            }
+            System.out.println("Enter the right of " + front.data);
+            int right = sc.nextInt();
+            if (right != -1) {
+                // attach to the right of front
+                 BinaryTreeNode<Integer> rightChild = new BinaryTreeNode<Integer>(right);
+                 front.right = rightChild;
+                // insert rightChild into queque
+                pendingChildren.add(rightChild);
+            }
+
+        }
+        return root;
+    }
+
+    // find the largest node in the binary tree
+    public static int largestNode(BinaryTreeNode<Integer> root) {
+        // base case
+        if (root == null) return -1;
+
+        int largestLeftSubtree = largestNode(root.left);
+        int largestRightSubtree = largestNode(root.right);
+        int largest = Math.max(root.data, Math.max(largestLeftSubtree, largestRightSubtree));
+        return largest;
+    }
+
     public static void main(String[] args) {
         // first node, root
         // BinaryTreeNode<Integer> root = new BinaryTreeNode<>(1);
@@ -144,7 +198,8 @@ public class BinaryTreeNodeUse {
         // BinaryTreeNode<Integer> five = new BinaryTreeNode<>(5);
         // rootRight.left = five;
 
-        BinaryTreeNode<Integer> root = takeInputBetter(true, 0, true);
+        // BinaryTreeNode<Integer> root = takeInputBetter(true, 0, true);
+        BinaryTreeNode<Integer> root = takeInputLevelWise();
 
         printBinaryTreeDetailed(root);
         int numOfNodes = countNumberOfNodes(root);
