@@ -1,4 +1,4 @@
-package Java.BST1;
+package Java.BST2;
 
 public class BinaryTreeNode<T> {
     public T data;
